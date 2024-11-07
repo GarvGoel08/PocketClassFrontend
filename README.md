@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Instructor-Student Booking System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a web-based booking platform for students to book available time slots with instructors. It includes user signup, login, and dashboards for both students and instructors, allowing them to manage bookings, create slots, and view details.
 
-## Available Scripts
+## Table of Contents
+- [Features](#features)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Environment Variables](#environment-variables)
+- [Project Structure](#project-structure)
+- [API Endpoints](#api-endpoints)
+- [Usage](#usage)
 
-In the project directory, you can run:
+## Features
+- **User Signup & Login**: Allows both students and instructors to create accounts and log in.
+- **Student Dashboard**: Displays list of instructors and allows students to book time slots.
+- **Instructor Dashboard**: Displays instructor's available slots and bookings, with options to create new slots.
+- **Role-Based Data**: Fetches data based on user role (Student/Instructor).
+  
+## Technologies
+- **Frontend**: React.js, Tailwind CSS for styling
+- **Backend**: Node.js, Express.js
+- **Database**: Firebase Firestore for user data and slot management
+- **Auth**: Bcrypt for password hashing
+- **Hosting**: Vercel
 
-### `npm start`
+## Usage
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Signup/Login**: 
+   - Go to the Signup page to register as a Student or Instructor.
+   - Login with valid credentials to access the respective dashboards.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. **Student Dashboard**:
+   - **View Instructors**: Displays a list of available instructors, with an option to filter by subject.
+   - **Book a Slot**: Click on an instructor to view available time slots and select one to book.
+   - **View Bookings**: Displays a list of all bookings made by the student, organized by status.
 
-### `npm test`
+3. **Instructor Dashboard**:
+   - **Create Slots**: Allows instructors to add available time slots for students to book.
+   - **Manage Bookings**: Displays a list of student bookings, sorted by status (e.g., pending, confirmed).
+   - **Slot Availability**: Shows all available slots for each instructor, allowing them to manage their schedule.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. **Data Fetching**:
+   - Bookings are fetched and displayed based on user role, and sorted by status to improve visibility of pending and confirmed slots.
+   - Data is loaded from the backend using the base URL from environment variables, making it flexible for different deployment setups.
 
-### `npm run build`
+## Some API Routes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### User Routes (`/api/user`)
+- **`POST /signup`** - Registers a user (either Student or Instructor) with required details.
+- **`POST /signin`** - Logs in a user, returns user details including role and user ID.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Slot Routes (`/api/slot`)
+- **`POST /add`** - Instructor can create a new time slot for bookings.
+- **`GET /instructor/:instructorId`** - Fetches available slots for a specific instructor based on the `InstructorID`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Booking Routes (`/api/booking`)
+- **`POST /add`** - Creates a new booking for a student with a specified slot.
+- **`GET /instructor/:userId`** - Retrieves all bookings for an instructor, organized by status.
+- **`GET /student/:userId`** - Retrieves all bookings for a student, organized by status.
 
-### `npm run eject`
+There are several more API Routes which are explained effectively in the HLD
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
