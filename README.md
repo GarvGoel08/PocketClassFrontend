@@ -5,11 +5,8 @@ This is a web-based booking platform for students to book available time slots w
 ## Table of Contents
 - [Features](#features)
 - [Technologies](#technologies)
-- [Setup](#setup)
-- [Environment Variables](#environment-variables)
-- [Project Structure](#project-structure)
-- [API Endpoints](#api-endpoints)
 - [Usage](#usage)
+- [API Endpoints](#api-endpoints)
 
 ## Features
 - **User Signup & Login**: Allows both students and instructors to create accounts and log in.
